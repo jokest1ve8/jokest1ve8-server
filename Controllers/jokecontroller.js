@@ -16,8 +16,6 @@ class JokeController {
 
     static deleteJoke(req,res){
         const id = +req.params.id
-        console.log('masuk joke');
-        console.log(id);
         Joke.destroy({
             where:{
                 id
