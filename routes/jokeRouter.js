@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const Controller = require('../Controllers/Controller')
+const JokeController = require('../Controllers/jokecontroller')
 const authentication = require('../middlewares/authentication')
 const authorization = require('../middlewares/authorization')
 
-router.get('/',Controller.getJokes)
+router.use(authentication)
+router.get('/',JokeController.getJokes)
+router.delete('/:id',authorization,JokeController.deleteJoke)
 
 
 module.exports = router
