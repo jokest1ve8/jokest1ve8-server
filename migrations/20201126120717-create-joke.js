@@ -22,9 +22,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      UserId : {
-        type: Sequelize.INTEGER
-      }
+      // UserId : {
+      //   type: Sequelize.INTEGER
+      // }
     });
   },
   down: async (queryInterface, Sequelize) => {
