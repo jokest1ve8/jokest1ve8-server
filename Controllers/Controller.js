@@ -65,6 +65,7 @@ class Controller {
 
     static googleLogin(req,res){
         let payload
+        console.log(req.body)
         client.verifyIdToken({
            idToken:req.body.googleToken,
            audience:process.env.GOOGLE_CLIENT_ID
@@ -78,6 +79,7 @@ class Controller {
            })
         })
         .then(user => {
+            console.log(user)
            if(user){
               return user
            }else{
@@ -88,11 +90,12 @@ class Controller {
            }
         })
         .then(user =>{
-           const access_token = sign({id:user.id,email:user.email})
+           const access_token = generateToken({id:user.id,email:user.email})
            res.status(200).json({access_token})
         })
         .catch(err => {
-           res.status(500).json({message:"Server Error"})
+            console.log(err);
+            res.status(500).json({message:"Server Error"})
         })
      }
 
