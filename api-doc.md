@@ -70,6 +70,82 @@
 
 **RESTful Endpoints**
 ---
+- `GET /jokes/userid`
+
+**Show Jokes**
+---
+  Returns array json data of all jokes by Id of User.
+
+* **URL**
+
+  `/jokes/userid`
+
+* **Method:**
+
+  `GET`
+
+* **Header:**
+
+  `access_token=[string]`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   ``
+
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```json
+      [
+        {
+         "id": 2,
+         "imageUrl": "dhakjdhHGAY",
+         "description": "LSJHAVGFAKMS",
+         "createdAt": "2020-10-26T14:32:38.555Z",
+         "updatedAt": "2020-10-26T14:32:38.555Z",
+         "UserId": 2
+         },{
+         "id": 3,
+         "imageUrl": "dhakjdhJKH",
+         "description": "LSJFAKJFAKLJ",
+         "createdAt": "2020-11-26T14:32:38.555Z",
+         "updatedAt": "2020-11-26T14:32:38.555Z",
+         "UserId": 2
+         }
+      ]
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 <br />
+    **Content:**
+    ```json
+    {
+      "message": "Server Error"
+    }
+    ```
+
+  OR
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+    ```json
+    {
+      "message": "Please Login First."
+    }
+    ```
+
+
+**RESTful Endpoints**
+---
 - `DELETE /jokes/:id`
 
 **Delete Jokes**
