@@ -5,8 +5,8 @@ const authentication = require('../middlewares/authentication')
 const authorization = require('../middlewares/authorization')
 
 router.use(authentication)
-router.get('/',JokeController.getJokes)
-router.get('/userid',JokeController.getAllJokesByUserId)
+router.get('/',authentication,JokeController.getJokes)
+router.get('/userid',authentication,JokeController.getAllJokesByUserId)
 router.delete('/:id',authorization,JokeController.deleteJoke)
 router.post ('/', JokeController.addJoke)
 

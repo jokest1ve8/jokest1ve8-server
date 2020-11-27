@@ -5,6 +5,7 @@ class JokeController {
     static getJokes(req,res){
         Joke.findAll()
         .then(data => {
+            console.log(data)
             res.status(200).json(data)
         })
         .catch(err => {
@@ -28,6 +29,7 @@ class JokeController {
     }
 
     static async addJoke (req, res, next) {
+        console.log('createJoke');
         try {
             let data = {
                 imageUrl : req.body.imageUrl,
@@ -36,6 +38,7 @@ class JokeController {
             }
 
             const newJoke = await Joke.create(data)
+            console.log(newJoke)
             res.status(201).json(newJoke)
         } catch (err) {
             res.status(500).json({

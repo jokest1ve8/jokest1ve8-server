@@ -14,17 +14,20 @@ module.exports = (req,res,next) => {
             User.findOne({where: {id: decoded.id}})
             .then(data => {
                 if(data){
+                    console.log('ada data')
                     next()
                 }else {
                     res.status(401).json({message: 'please login first'})
                 }
             })
             .catch(error => {
+                console.log(error)
                 res.status(401).json({message: 'please login first'})
             })
             
         }
     } catch (err) {
+        console.log(err)
         res.status(401).json({message: 'please login first'})
     }
 }
