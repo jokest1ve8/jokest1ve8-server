@@ -8,7 +8,7 @@ const jokeRouter = require ('./jokeRouter')
 indexRouter.post("/register", Controller.register)
 indexRouter.post("/login", Controller.login)
 indexRouter.get('/randomDadJoke',Controller.getRandomDadJoke)
-router.post('/googleLogin',Controller.googleLogin)
+indexRouter.post('/googleLogin',Controller.googleLogin)
 indexRouter.use('/jokes',jokeRouter)
 
 
