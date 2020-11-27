@@ -318,3 +318,56 @@
          }
       }
     ```
+
+**RESTful Endpoints**
+---
+- `POST /googleLogin`
+
+**Create User Or Log in User by google OAUTH**
+---
+  Returns json of access token.
+
+* **URL**
+
+  `/googleLogin`
+
+* **Method:**
+
+  `POST`
+
+* **Header:**
+
+  `None`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `None`
+
+
+* **Data Params**
+
+  `googleToken=[string]`
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:** 
+    ```json
+      {
+         {
+            "access_token":"slkfjalfjakljflajflakj"
+         }
+      {
+    ```
+ 
+* **Error Response:**
+
+  * **Code:** 500 <br />
+    **Content:**
+    ```json
+    {
+      "message": "Server Error"
+    }
+    ```
