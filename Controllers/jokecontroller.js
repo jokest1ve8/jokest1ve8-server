@@ -1,9 +1,7 @@
-const { Joke } = require('../models/index')
-
+const { User,Joke } = require('../models/index')
 
 class JokeController {
 
-    
     static getJokes(req,res){
         Joke.findAll()
         .then(data => {
@@ -14,28 +12,46 @@ class JokeController {
         })
     }
 
-    static deleteJoke(req,res){
-        const id = +req.params.id
-        Joke.destroy({
-            where:{
-                id
-            },
-            returning:true
-        })
-        .then(joke=>{
-            console.log(joke)
-            if(joke){
-                res.status(200).json({message:'Joke success to delete'})
-            }else{
-                res.status(404).json({message:"Joke not found"})
+    static addJoke (req, res, next) {
+        try {
+            let data = {
+                imageUrl : req.body.imageUrl,
+                description : req.body.description,
+                UserId : req.loggedInUser.id
             }
-        })
-        .catch(err => {
-            res.status(500).json({message:"Server Error"})
-        })
+
+            const newJoke = await Joke.create(data)
+            res.status(201).json(newJoke)
+        } catch (err) {
+            res.status(500).json({
+                msg : err.name
+            })
+        }
+
     }
 
-
+    static deleteJoke (req, res, next) {
+        try {
+            let id = req.params.id
+            const result = await Joke.destroy({
+                where : {id}
+            })
+            if (!result){
+                throw {
+                    status : 404,
+                    msg : "Jokes not Found"
+                }
+            } else {
+                res.status(201).json({
+                    msg : "Joke Success to Delete"
+                })
+            }
+        } catch (err) {
+            res.status(500).json({
+                msg : err.name
+            })
+        }
+    }
 }
 
 module.exports = JokeController
