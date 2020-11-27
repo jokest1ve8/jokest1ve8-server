@@ -1,7 +1,8 @@
 const { User,Joke } = require('../models/index')
 const { compare } = require('../helper/bcrypt')
 const { generateToken } = require('../helper/jwt')
-
+const axios = require('axios')
+const { application } = require('express')
 
 class Controller {
 
@@ -44,6 +45,23 @@ class Controller {
         })
     }
 
+
+    static getRandomDadJoke(req,res){
+        axios({
+            url:"https://icanhazdadjoke.com/",
+            method:"GET",
+            headers:{
+                Accept:"application/json"
+            }
+        })
+        .then(response => {
+            response = response.data
+            res.status(response.status).json({joke:response.joke})
+        })
+        .catch(err => {
+            res.status(500).json({message:'Server Error'})
+        })
+    }
 
 }
 

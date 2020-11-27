@@ -5,9 +5,11 @@ const authentication = require('../middlewares/authentication')
 const authorization = require('../middlewares/authorization')
 const jokeRouter = require ('./jokeRouter')
 
-indexRouter.use ("/jokes", jokeRouter)
 indexRouter.post("/register", Controller.register)
 indexRouter.post("/login", Controller.login)
+indexRouter.get('/randomDadJoke',Controller.getRandomDadJoke)
+indexRouter.use('/jokes',jokeRouter)
+
 
 
 module.exports = indexRouter
