@@ -88,7 +88,7 @@ class Controller {
            }
         })
         .then(user =>{
-           const access_token = sign({id:user.id,email:user.email})
+           const access_token = generateToken({id:user.id,email:user.email})
            res.status(200).json({access_token})
         })
         .catch(err => {

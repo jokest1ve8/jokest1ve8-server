@@ -37,12 +37,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     firstname: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: 'firstname cannot be empty'
-        }
-      }
+      allowNull: true,
+      // validate: {
+      //   notEmpty: {
+      //     msg: 'firstname cannot be empty'
+      //   }
+      // }
     },
     lastname: DataTypes.STRING
   }, {
